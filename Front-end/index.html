@@ -95,11 +95,12 @@ h1 {
   overflow: auto;
 }
 
-@media screen and (max-width: 700px){
+@media screen {
   .box{
-    width: 70%;
+    width: 50%;
   }
   .popup{
+    height: 70%;
     width: 70%;
   }
 }
@@ -121,12 +122,18 @@ h1 {
         <h2>Info</h2>
         <a class="close" href="#">&times;</a>
         <div class="content" id="{{.Id}}">
-        {{.Members}}
-        {{.CreationDate}}
-        {{.FirstAlbum}}
+        <p>Members:</p>{{.Members}}
+        <br>
+        <p>Creation Date:</p>{{.CreationDate}}
+        <br>
+        <p>First Album:</p>{{.FirstAlbum}}
+        <br>
         {{.Locations}}
+        <br>
         {{.Relations}}
-        {{.Dates}}
+        <br>
+        {{.ConcertDates}}
+        <br>
         </div>
         </div>
         </div>
