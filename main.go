@@ -1,14 +1,9 @@
 package main
 
 import (
-	"encoding/json"
-	"fmt"
-	"io/ioutil"
-	"net/http"
-	"server"
+	server "groupie/Back-end"
 )
 
 func main() {
-	startServer()
-	fmt.Println("Now listening to port: 8080")
+	server.StartServer()
 }
