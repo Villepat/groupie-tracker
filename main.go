@@ -21,20 +21,21 @@ func main() {
 		Dates        string   `json:"dates"`
 	}
 	url := "https://groupietrackers.herokuapp.com/api/artists"
-	res, err := http.Get(url)
+	res, err := http.Get(url) //get contents of API
 	if err != nil {
-		fmt.Println("Joku ei nyt kyllä täsmää ERRRRR")
+		fmt.Println("ERRRRR")
 	}
 	defer res.Body.Close()
 
-	body, err := ioutil.ReadAll(res.Body)
+	body, err := ioutil.ReadAll(res.Body) //read body of contents
 	if err != nil {
 		// handle error
 		return
 	}
 	var AllArtists []Artist
 	json.Unmarshal(body, &AllArtists)
-	fmt.Println(AllArtists[0].Members[0])
+	fmt.Println(AllArtists[0].Members[0]) //first member or first artist -> Freddieeee
+	fmt.Println(AllArtists[0].Name)
 	fmt.Print(AllArtists[0])
 
 }
