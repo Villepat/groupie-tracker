@@ -1,5 +1,14 @@
-.img{
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* .img{
     display: block;
+} */
+body {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .text{
@@ -36,18 +45,29 @@
   .button {
     font-size: 1em;
     padding: 10px;
-    color: #fff;
+    color: rgb(255, 255, 255);
     border: 2px solid #06D85F;
     border-radius: 20px/50px;
     text-decoration: none;
     cursor: pointer;
     transition: all 0.3s ease-out;
-  }
-  .button {
     background: #06D85F;
   }
+
   .button:hover{
     opacity: 0.6;
+  }
+  .container{
+    display: inline-grid;
+    /* grid-auto-rows: auto; */
+    grid-template-columns: auto ;
+   
+  
+    width: 240px;
+    height: 280px;
+    /* padding-left: 0%; */
+    /* grid-template-rows: max-content; */
+    margin: 0px;
   }
   
   .overlay {
