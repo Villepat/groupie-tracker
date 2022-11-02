@@ -10,15 +10,12 @@
 </head>
 <body>
   <h1>Groupie Trackatron 9000</h1>
-    <div class="artist">
         {{range .}}
-        
         <div class="container">
           <a class="button" href="#{{.Name}}">{{.Name}}</a>
         <img src="{{.Image}}" id="{{.Id}}" class="img">
         <div class="box">
-        </div>
-        
+        </div>  
         <div id="{{.Name}}" class="overlay">
         <div class="popup">
         <h2>Info</h2>
