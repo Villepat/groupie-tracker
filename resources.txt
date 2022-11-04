@@ -1,1 +1,2 @@
 https://betterprogramming.pub/how-to-generate-html-with-golang-templates-5fad0d91252
+https://stackoverflow.com/questions/16734503/access-out-of-loop-value-inside-golang-templates-loop
