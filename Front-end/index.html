@@ -10,35 +10,37 @@
 </head>
 <body>
   <h1>Groupie Trackatron 9000</h1>
-        {{range .}}
-        <div class="container">
-          <a class="button" href="#{{.Name}}">{{.Name}}</a>
-        <img src="{{.Image}}" id="{{.Id}}" class="img">
-        <div class="box">
-        </div>  
-        <div id="{{.Name}}" class="overlay">
-        <div class="popup">
+  {{$fuckass := .}}
+  {{$n := 1}}
+  {{range $ind, $art := .ArtistData}}
+
+  <div class="container">
+    <a class="button" href="#{{$art.Name}}">{{$art.Name}}</a>
+    <img src="{{$art.Image}}" id="{{$art.Id}}" class="img">
+    <div class="box">
+    </div>
+    <div id="{{$art.Name}}" class="overlay">
+      <div class="popup">
         <h2>Info</h2>
         <a class="close" href="#">&times;</a>
-        <div class="content" id="{{.Id}}">
-        <p>Members:</p>{{.Members}}
-        <br>
-        <p>Creation Date:</p>{{.CreationDate}}
-        <br>
-        <p>First Album:</p>{{.FirstAlbum}}
-        <br>
-        {{.Locations}}
-        <br>
-        {{.Relations}}
-        <br>
-        {{.ConcertDates}}
-        <br>
+        <div class="content" id="{{$art.Id}}">
+          <p>Members:</p>
+          {{range $art.Members}}
+          <p>{{.}}</p>
+          {{end}}
+          <br>
+          <p>Creation Date:</p>{{$art.CreationDate}}
+          <br>
+          <p>First Album:</p>{{$art.FirstAlbum}}
+          {{$hello := index $fuckass.RelationData.Index $ind}}
+          <p>{{$hello}}</p>
+          <br>
         </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        {{end}}
-        </div>
-       </body>
-       </html>
+      </div>
+    </div>
+  </div>
+  </div>
+  {{end}}
+  </div>
+</body>
+</html>
