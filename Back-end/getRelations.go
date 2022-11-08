@@ -12,12 +12,12 @@ type Relation struct {
 	} `json:"index"`
 }
 
-func GetRelations() {
+func GetRelations() Relation {
 	Relations := Relation{}
 	data, _ := Harvest("https://groupietrackers.herokuapp.com/api/relation")
 	json.Unmarshal(data, &Relations)
 	//fmt.Println(Relations)
 	//fmt.Println("jee")
 	//fmt.Println(string(data))
-	//return Relations
+	return Relations
 }

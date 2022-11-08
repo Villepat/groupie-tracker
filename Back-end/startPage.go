@@ -18,7 +18,7 @@ func StartPage(w http.ResponseWriter, r *http.Request) {
 		}
 		//fmt.Println(AllArtists)
 		GetRelations()
-		tmpl.ExecuteTemplate(w, "index.html", GetArtists())
+		tmpl.ExecuteTemplate(w, "index.html", PageData())
 		//w.WriteHeader(200)
 		//tmpl.Execute(w, nil)
 	}

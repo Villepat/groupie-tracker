@@ -1,8 +1,9 @@
 package server
 
 import (
-	"fmt"
 	"encoding/json"
+	"fmt"
+	//"fmt"
 )
 
 type HtmlData struct {
@@ -12,7 +13,6 @@ type HtmlData struct {
 
 type relation struct {
 	Index []struct {
-		//Id             int                 `json:"id"`
 		DatesLocations map[string][]string `json:"datesLocations"`
 	} `json:"index"`
 }
@@ -24,34 +24,33 @@ type AllData struct {
 	Members        []string
 	CreationDate   int
 	FirstAlbum     string
-		//Id             int                 `json:"id"`
 	DatesLocations map[string][]string `json:"datesLocations"`
-	
 }
 
 var IndexPageData HtmlData
-var Popup []AllData
+
+//var Popup []AllData
 var ArtistAPI = GetArtists()
 var RelationAPI = GetRelations()
 
-func PageData() HtmlData {
-	IndexPageData.ArtistData = GetArtists()
-	IndexPageData.RelationData = GetRelations()
+func PageData() []AllData {
+	//IndexPageData.ArtistData = GetArtists()
+	//IndexPageData.RelationData = GetRelations()
 	//relData := GetRelations()
-	
+	popup := []AllData{}
 	Testo := relation{}
 	data, _ := Harvest("https://groupietrackers.herokuapp.com/api/artists")
 	data2, _ := Harvest("https://groupietrackers.herokuapp.com/api/relation")
-	json.Unmarshal(data, &Popup)
+	json.Unmarshal(data, &popup)
 	json.Unmarshal(data2, &Testo)
 	//fmt.Println(Testo)
 	test, _ := json.Marshal(Testo.Index)
 	//fmt.Println("test marshalled", string(test))
-	json.Unmarshal(test, &Popup)
+	json.Unmarshal(test, &popup)
 	//fmt.Println("test",string(test))
 	//fmt.Println("relData:",len(relData))
 	//fmt.Println("Alldata:", len(Popup))
-	fmt.Println("shouldWork", Popup[0])
+	//fmt.Println("shouldWork", Popup[0])
 	//fmt.Println("???", string(data2))
 
 	//fmt.Println(Popup)
@@ -69,9 +68,9 @@ func PageData() HtmlData {
 	//Popup.DatesLocations = artData.DatesLocations
 
 	//fmt.Println()
-	//fmt.Println("POPOPOPOPOPOPOPOPOPOPOPUP",Popup)
+	fmt.Println("POPOPOPOPOPOPOPOPOPOPOPUP", popup)
 	//fmt.Println()
-	return IndexPageData
+	return popup
 }
 
 // func MasterData(IDnm int) AllData {
