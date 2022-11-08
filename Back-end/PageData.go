@@ -3,6 +3,7 @@ package server
 import (
 	"encoding/json"
 	"fmt"
+	"net/http"
 	//"fmt"
 )
 
@@ -33,14 +34,17 @@ var IndexPageData HtmlData
 var ArtistAPI = GetArtists()
 var RelationAPI = GetRelations()
 
-func PageData() []AllData {
+func PageData(w http.ResponseWriter) []AllData {
 	//IndexPageData.ArtistData = GetArtists()
 	//IndexPageData.RelationData = GetRelations()
 	//relData := GetRelations()
 	popup := []AllData{}
 	Testo := relation{}
-	data, _ := Harvest("https://groupietrackers.herokuapp.com/api/artists")
-	data2, _ := Harvest("https://groupietrackers.herokuapp.com/api/relation")
+	data, err1 := Harvest("https://groupietrackers.herokuapp.com/api/artists")
+	data2, err2 := Harvest("https://groupietrackers.herokuapp.com/api/relation")
+	if err1 != nil || err2 != nil {
+		error500(w)
+	}
 	json.Unmarshal(data, &popup)
 	json.Unmarshal(data2, &Testo)
 	//fmt.Println(Testo)

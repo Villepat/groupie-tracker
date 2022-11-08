@@ -119,6 +119,8 @@ body {
     border: 1px solid black;
   }
   .tablebox {
+    display: grid;
+    text-align: center;
   }
   
   @media screen and (max-width: 2000px){

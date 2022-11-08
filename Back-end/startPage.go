@@ -2,7 +2,6 @@ package server
 
 import (
 	"html/template"
-	"log"
 	"net/http"
 )
 
@@ -14,11 +13,13 @@ func StartPage(w http.ResponseWriter, r *http.Request) {
 	} else {
 		tmpl, err := template.ParseFiles("Front-end/index.html")
 		if err != nil {
-			log.Fatalln(err) //deal with tomorrow lol
+			error500(w)
+			return
+			//log.Fatalln(err) //deal with tomorrow lol
 		}
 		//fmt.Println(AllArtists)
 		GetRelations()
-		tmpl.ExecuteTemplate(w, "index.html", PageData())
+		tmpl.ExecuteTemplate(w, "index.html", PageData(w))
 		//w.WriteHeader(200)
 		//tmpl.Execute(w, nil)
 	}
