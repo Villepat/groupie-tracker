@@ -15,12 +15,11 @@ func StartPage(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			error500(w)
 			return
-			//log.Fatalln(err) //deal with tomorrow lol
 		}
-		//fmt.Println(AllArtists)
-		GetRelations()
-		tmpl.ExecuteTemplate(w, "index.html", PageData(w))
-		//w.WriteHeader(200)
-		//tmpl.Execute(w, nil)
+		err2 := tmpl.ExecuteTemplate(w, "index.html", PageData(w))
+		if err2 != nil {
+			error500(w)
+			return
+		}
 	}
 }
