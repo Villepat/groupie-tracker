@@ -9,7 +9,6 @@ func StartServer() {
 	fs := http.FileServer(http.Dir("Front-end/css"))
 	http.Handle("/css/", http.StripPrefix("/css/", fs))
 	http.HandleFunc("/", StartPage)
-	//http.HandleFunc("/ascii-art", SubmitData)
 	fmt.Println("Server is listening to port #8080...")
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
