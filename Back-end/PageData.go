@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strings"
 	//"fmt"
 )
 
@@ -45,10 +46,12 @@ func PageData(w http.ResponseWriter) []AllData {
 	if err1 != nil || err2 != nil {
 		error500(w)
 	}
+
 	json.Unmarshal(data, &popup)
 	json.Unmarshal(data2, &Testo)
 	//fmt.Println(Testo)
 	test, _ := json.Marshal(Testo.Index)
+	test = []byte(strings.Title(strings.ReplaceAll(string(test), "_", " ")))
 	//fmt.Println("test marshalled", string(test))
 	json.Unmarshal(test, &popup)
 	//fmt.Println("test",string(test))

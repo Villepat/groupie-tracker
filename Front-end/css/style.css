@@ -115,14 +115,7 @@ body {
     max-height: 30%;
     overflow: auto;
   }
-  .table, th, td {
-    border: 1px solid black;
-  }
-  .tablebox {
-    display: grid;
-    text-align: center;
-  }
-  
+
   @media screen and (max-width: 2000px){
     .box{
       width: 70%;

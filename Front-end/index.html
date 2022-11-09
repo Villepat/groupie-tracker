@@ -30,20 +30,15 @@
           <p>Creation Date:</p>{{$all.CreationDate}}
           <br>
           <p>First Album:</p>{{$all.FirstAlbum}}
-          <div class="tablebox">
-          {{range $loc, $dat := $all.DatesLocations}}
-            <table class="table">
-              <tr>
-            <th>{{$loc}}</th>
-              </tr>
-              <tr>
-            {{range $dat}}
-            <td>{{.}}</td>
+            <p>Concert Locations:</p>
+            {{range $loc, $dat := $all.DatesLocations}}
+          <p>
+            {{$loc}}:
+          </p>
+          {{range $dat}}
+            <p>{{.}}</p>
             {{end}}
-          </tr>
-          </table>
           {{end}}
-          </div>
           <br>
         </div>
       </div>
