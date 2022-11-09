@@ -13,7 +13,12 @@ type ErrorInfo struct {
 var Err ErrorInfo
 
 func errorPage(w http.ResponseWriter) {
-	tmpl, _ := template.ParseFiles("Front-end/error.html")
+	tmpl, err := template.ParseFiles("Front-end/error.html")
+	if err != nil {
+		w.WriteHeader(500)
+		w.Write([]byte("500 Internal Server Error"))
+		return
+	}
 	tmpl.ExecuteTemplate(w, "error.html", Err)
 }
 
